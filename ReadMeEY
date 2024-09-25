@@ -1,0 +1,31 @@
+CII Press Release Chatbot
+Project Overview
+This chatbot helps users ask questions about CII press releases by scraping and processing information from specific CII web pages.
+
+Features
+	•	Scrapes press release data (title, summary, date) from CII's website.
+	•	Processes user questions to match relevant press releases.
+	•	Provides a simple interface built using Streamlit.
+
+Setup Instructions
+1. Install Dependencies
+Run the following command to install required packages:
+pip install requests beautifulsoup4 streamlit nltk
+
+
+2. Download NLTK Resources
+Run this to get NLTK resources for tokenization and stopwords:
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+
+3. Run the App
+Use this command to start the Streamlit app:
+streamlit run cii_press_release_chatbot.py
+
+How It Works
+	1	Scrapes Press Releases: Extracts title, summary, and date from provided URLs.
+	2	Processes Questions: Matches user queries with press release summaries using basic word comparison.
+	3	Shows Results: Returns relevant press release data based on the question.
+
+
