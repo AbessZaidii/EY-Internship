@@ -1,0 +1,31 @@
+import streamlit as st
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Title of the app
+st.title("Statistical Graph Dashboard")
+
+# Load dataset (assuming it's in the same directory)
+df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/anscombe.csv")
+
+# Sidebar selection for dataset
+dataset_options = df["dataset"].unique()
+selected_dataset = st.sidebar.selectbox("Select Dataset", dataset_options)
+
+# Filter data based on selection
+filtered_df = df[df["dataset"] == selected_dataset]
+
+# Create the plot
+fig, ax = plt.subplots()
+sns.scatterplot(x="x", y="y", data=filtered_df, ax=ax, s=100, color='blue', edgecolor='black')
+sns.regplot(x="x", y="y", data=filtered_df, ax=ax, scatter=False, color='red', ci=None)
+ax.set_title(f"Dataset {selected_dataset}")
+
+# Show plot in Streamlit
+st.pyplot(fig)
+
+# Display dataset
+st.write("### Dataset Preview")
+st.dataframe(filtered_df)
+
